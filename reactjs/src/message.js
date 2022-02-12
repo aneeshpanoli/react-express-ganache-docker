@@ -36,6 +36,7 @@ class Message extends Component {
     // on click on Deploy button send the POST request to the localhost:4000/deploy
     // to deploy the contract
     onsubmitdeploy = () => {
+        console.log("deploy");
         axios.post(endpoint + "/deploy").then(res => {
             this.setState({
                 output : res.data

@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './App.css';
-import message from "./message";
+import Message from "./message";
 
 const App = () => { 
     return (
       <Router>
-        <Switch>
           <Route exact path="/">
-            <Component />
+            <Message />
           </Route>
-        </Switch>
       </Router>
     );
   

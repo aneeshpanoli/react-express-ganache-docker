@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const logic = require("../../ethereum/logic");
+const logic = require("../ethereum/logic");
 
 router.get("/", async (req,res,next) => {
     let message = await logic.getMessage();

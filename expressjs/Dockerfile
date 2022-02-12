@@ -9,16 +9,10 @@ RUN apk update && apk upgrade && apk add --no-cache bash git openssh
 RUN apk add --update python3 krb5 krb5-libs gcc make g++ krb5-dev
 
 # Copy the package.json
-COPY ./package.json .
-COPY ./package-lock.json .
+ADD . /app
 
 # Install the dependencies
-
-RUN npm audit fix --force
-# RUN npm install
-
-# Copy the server and ethereum module
-COPY . .
+RUN npm i -g npm-check-updates && ncu -u && npm install
 
 # set the default command
 CMD ["npm","start"]

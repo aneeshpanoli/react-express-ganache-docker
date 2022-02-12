@@ -2,23 +2,29 @@ version: "3"
 services:
   ganache:
     build:
-      context: .
-      dockerfile: Dockerfile.ganache
+      context: ./ganache
+      dockerfile: Dockerfile
     ports:
       - "8545:8545"
-  dapp:
-    build: .
+  expressjs:
+    build:
+      context: ./expressjs
+      dockerfile: Dockerfile
+    volumes:
+      - ./expressjs:/app
     ports:
       - "4000:4000"
     depends_on:
       - ganache
 
-  react:
-    build: ./reactjs
+  reactjs:
+    build:
+      context: ./reactjs
+      dockerfile: Dockerfile
     volumes:
       - ./reactjs:/app
-      - /app/node_modules
     ports:
-      - "3002:3000"
+      - "3000:3000"
     depends_on:
-      - dapp
+      - expressjs
+    stdin_open: true

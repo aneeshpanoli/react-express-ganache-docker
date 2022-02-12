@@ -1,18 +1,15 @@
 # using node alpine as base image
-FROM node:14-alpine
+FROM node:16-alpine
 
 # working dir ./app
 WORKDIR /app
 
 # Copy react package.json
-COPY ./package.json .
-COPY ./package-lock.json .
+ADD . /app
 
 # install dependencies
-RUN npm audit fix --force
+RUN npm i -g npm-check-updates && ncu -u && npm install
 
-# COPY client directory folder
-COPY . .
 
 # default command
 CMD ["npm","start"]
