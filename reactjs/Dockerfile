@@ -8,7 +8,7 @@ WORKDIR /app
 ADD . /app
 
 # install dependencies
-RUN npm i -g npm-check-updates && ncu -u && npm install
+RUN npm install
 
 
 # default command
