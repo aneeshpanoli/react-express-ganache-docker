@@ -1,14 +1,15 @@
 # using node alpine as base image
-FROM node:alpine
+FROM node:11-alpine
 
 # working dir ./app
 WORKDIR /app
 
 # Copy react package.json
 COPY ./package.json .
+COPY ./package-lock.json .
 
 # install dependencies
-RUN npm install
+RUN npm audit fix --force
 
 # COPY client directory folder
 COPY . .
