@@ -14,7 +14,10 @@ services:
       - ganache
 
   react:
-    build: ./client
+    build: ./reactjs
+    volumes:
+      - ./reactjs:/app
+      - /app/node_modules
     ports:
       - "3002:3000"
     depends_on:
